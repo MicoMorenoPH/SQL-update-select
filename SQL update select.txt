@@ -1,0 +1,11 @@
+BEGIN TRAN
+
+UPDATE A 
+SET A.qty_iss = b.qty
+--SELECT A.item_code,A.qty_app,ISNULL(b.qty,0)qty,a.qty_iss
+FROM dbo.rq_itemreq_dtl A
+INNER JOIN #tmp b ON a.item_code = b.itemcode COLLATE DATABASE_DEFAULT
+WHERE refno ='006-34616'
+
+COMMIT 
+ROLLBACK
